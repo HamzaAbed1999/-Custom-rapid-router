@@ -1,0 +1,10 @@
+Django~=3.2.25
+pytest~=7.4.4
+djangorestframework~=3.13.1
+portal~=3.0.0
+pytz~=2024.1
+selenium~=4.9.0
+libsass~=0.23.0
+django-pipeline~=2.0.8
+setuptools~=74.0.0
+django-environ~=0.11.2
