@@ -1,4 +1,5 @@
 from django.conf.urls import include, url
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from portal import urls as portal_urls
 
@@ -12,4 +13,4 @@ urlpatterns = [
     # path("administration/", admin.site.urls),
     url(r"^rapidrouter/", include(game_urls)),
     url(r"^pythonden/", include(python_den_urls)),
-]
+]+ staticfiles_urlpatterns()

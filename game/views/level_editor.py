@@ -21,6 +21,7 @@ from rest_framework.views import APIView
 import game.level_management as level_management
 import game.messages as messages
 import game.permissions as permissions
+import settings
 from game import app_settings
 from game import random_road
 from game.cache import cached_level_decor, cached_level_blocks
@@ -321,7 +322,7 @@ def save_level_for_editor(request, levelId=None):
             }
 
             # Send a POST request to Server A's API endpoint
-            api_url = 'http://localhost:8001/studio/artifacts/artifact/update/'
+            api_url = settings.API_URL
             response = requests.post(api_url, json=artifact_data)
 
             if response.status_code == 200:
