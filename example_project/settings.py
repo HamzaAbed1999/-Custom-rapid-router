@@ -9,8 +9,10 @@ env = environ.Env(
 )
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-print('rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr')
-print(BASE_DIR)
+ROOT_URLCONF = 'example_project.urls'
+WSGI_APPLICATION = 'example_project.wsgi.application'
+api_url = env('BASE_URL')+'/studio/artifacts/artifact/update/'
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
@@ -81,10 +83,8 @@ STATICFILES_DIRS = [
     os.path.join(os.path.dirname(portal.__file__), "static"),  # Portal package static files
 ]
 
-SECRET_KEY = "not-a-secret"
-ROOT_URLCONF = "urls"
+SECRET_KEY = "m%nv-45ld@&6ui+!xumd954f9!yyz2-_a^*ys4v6o@pnnb--$8"
 
-WSGI_APPLICATION = "wsgi.application"
 
 INSTALLED_APPS = (
     "game",
