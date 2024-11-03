@@ -24,7 +24,7 @@ COPY . /app/
 
 # Collect static files
 RUN python3 example_project/manage.py collectstatic --noinput
-
+RUN python3 example_project/manage.py migrate --noinput
 # Expose port 8000
 EXPOSE 8000
 
