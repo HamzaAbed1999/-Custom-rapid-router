@@ -1,6 +1,6 @@
 var ocargo = ocargo || {};
 
-ocargo.Saving = function () {};
+ocargo.Saving = function () { };
 
 function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
@@ -20,8 +20,8 @@ ocargo.Saving.prototype.retrieveListOfWorkspaces = function (callback) {
             success: function (json) {
                 callback(null, json);
             },
-                  error: function (xhr, errmsg, err) {
-          callback(xhr.status + ": " + errmsg + " " + err + " " + xhr.responseText);
+            error: function (xhr, errmsg, err) {
+                callback(xhr.status + ": " + errmsg + " " + err + " " + xhr.responseText);
             }
         });
     }
@@ -193,7 +193,7 @@ ocargo.Saving.prototype.deleteLevel = function (id, callback, errorCallback) {
         url: Urls.delete_level_for_editor(id),
         type: 'POST',
         dataType: 'json',
-        data: {csrfmiddlewaretoken: Cookies.get('csrftoken')},
+        data: { csrfmiddlewaretoken: Cookies.get('csrftoken') },
         beforeSend: function (xhr, settings) {
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
@@ -215,7 +215,10 @@ ocargo.Saving.prototype.saveLevel = function (level, id, anonymous, callback, er
         url: (id ? Urls.save_level_for_editor(id) : Urls.save_level_for_editor()),
         type: 'POST',
         dataType: 'json',
-        data: {data: JSON.stringify(level)},
+        data: {
+            levelData: JSON.stringify(level),
+            artifactId: window.artifactId
+        },
         beforeSend: function (xhr, settings) {
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);

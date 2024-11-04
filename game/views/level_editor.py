@@ -63,8 +63,8 @@ def level_editor(request, artifactId=None, levelId=None):
         # user_profile = UserProfile.objects.get(id=level.owner_id)
         #
         # if request.user.id == user_profile.user_id:
-        context["level"] = levelId
-        context["artifactId"]=artifact_id
+    context["level"] = levelId
+    context["artifactId"]=artifact_id
     return render(request, "game/level_editor.html", context=context)
 
 
@@ -249,9 +249,9 @@ def load_level_for_editor(request, levelID):
 def save_level_for_editor(request, levelId=None):
     """Processes a request on creation of the map in the level editor"""
 
-    data = json.loads(request.POST["data"])
+    data = json.loads(request.POST["levelData"])
     data["disable_algorithm_score"] = True
-    data['artifact_id'] = request.POST.get('artifactid')
+    data['artifact_id'] = request.POST.get('artifactId')
     if ("character" not in data) or (not data["character"]):
         # Set a default, to deal with issue #1158 "Cannot save custom level"
         data["character"] = 1
@@ -310,7 +310,7 @@ def save_level_for_editor(request, levelId=None):
             #     for school_admin in school_admins
             #     if school_admin.new_user != request.user
             # ]
-            artifactid=request.POST['artifactid']
+            artifactid=request.POST['artifactId']
 
             level.save()
 
