@@ -49,7 +49,7 @@ from game.views.level_editor import (
     ShareLevelView,
     play_anonymous_level,
     owned_levels,
-    shared_levels, Artifact_level_editor,
+    shared_levels,
 )
 from game.views.level_moderation import level_moderation
 from game.views.level_selection import blockly_levels, random_level_for_episode
@@ -128,7 +128,7 @@ urlpatterns = [
         include(
             [
                 # url(r"^$", level_editor, name="level_editor"),
-                url(r"^artifact/(?P<artifactid>[0-9]+)/$", level_editor, name="artifact_level_editor"),
+                url(r"^artifact/(?P<artifactId>[0-9]+)/$", level_editor, name="artifact_level_editor"),
                 url(
                     r"^(?P<artifactId>[0-9]+)/(?P<levelId>[0-9]+)/$",
                     level_editor,
