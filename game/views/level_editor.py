@@ -4,7 +4,7 @@ import json
 import re
 from builtins import map
 from builtins import str
-
+from example_project.settings import api_url as Base_url
 import requests
 from common.models import Student, Teacher
 from django.contrib.auth.models import User
@@ -21,7 +21,6 @@ from rest_framework.views import APIView
 import game.level_management as level_management
 import game.messages as messages
 import game.permissions as permissions
-import settings
 from game import app_settings
 from game import random_road
 from game.cache import cached_level_decor, cached_level_blocks
@@ -322,8 +321,8 @@ def save_level_for_editor(request, levelId=None):
             }
 
             # Send a POST request to Server A's API endpoint
-            api_url = settings.API_URL
-            response = requests.post(api_url, json=artifact_data)
+
+            response = requests.post(Base_url, json=artifact_data)
 
             if response.status_code == 200:
                 print('Artifact updated successfully on Server A.')
