@@ -4,6 +4,7 @@ services:
       context: .
       args:
         BASE_URL: ${BASE_URL}
+    working_dir: /app/example_project  # Set working directory to where manage.py is located
     command: gunicorn example_project.wsgi:application --bind 0.0.0.0:8000 --workers 3 --timeout 120
     volumes:
       - .:/app  # Mount the entire project directory to /app inside the container
