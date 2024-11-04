@@ -25,6 +25,8 @@ COPY . .
 # Install the package in editable mode
 RUN pip install -e .
 
+
+
 # Expose port 8000
 EXPOSE 8000
 
