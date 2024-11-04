@@ -13,4 +13,4 @@ urlpatterns = [
     # path("administration/", admin.site.urls),
     url(r"^rapidrouter/", include(game_urls)),
     url(r"^pythonden/", include(python_den_urls)),
-]+ staticfiles_urlpatterns()
+]
