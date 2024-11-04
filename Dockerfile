@@ -1,5 +1,5 @@
 # Use Python 3.8 slim as the base image
-FROM python:3.8-slim
+FROM python:3.10-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -17,11 +17,13 @@ RUN apt-get update && apt-get install -y \
 # Install Python dependencies
 COPY requirements.txt .
 RUN pip install --upgrade pip
-RUN pip install -e .
-
+RUN pip install -r requirements.txt
 
 # Copy project files
 COPY . .
+
+# Install the package in editable mode
+RUN pip install -e .
 
 # Expose port 8000
 EXPOSE 8000
