@@ -79,7 +79,8 @@ LOCALE_PATHS = [
 STATIC_URL = "/static/"  # This is the URL prefix to access static files in templates
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "game/static"),  # Add this only if you have game-specific static files
+    os.path.join(BASE_DIR, "./game/static/"),
+
     os.path.join(os.path.dirname(portal.__file__), "static"),  # Portal package static files
 ]
 
@@ -129,11 +130,11 @@ PIPELINE = {
                 "portal/sass/colorbox.scss",
                 "portal/sass/styles.scss",
             ),
-            "output_filename": "portal.css",
+            "output_filename": "portal/portal.css",
         },
         "popup": {
             "source_filenames": ("portal/sass/partials/_popup.scss",),  # Make paths relative
-            "output_filename": "popup.css",
+            "output_filename": "portal/popup.css",
         },
         "game-scss": {
             "source_filenames": ("game/sass/game.scss",),  # Make paths relative
