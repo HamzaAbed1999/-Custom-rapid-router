@@ -76,8 +76,9 @@ LOCALE_PATHS = [
     os.path.join(os.path.dirname(__file__), "locale")
 ]
 
-STATIC_URL = "/static/"  # This is the URL prefix to access static files in templates
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+STATIC_URL = "/static/"
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "./game/static/"),
 

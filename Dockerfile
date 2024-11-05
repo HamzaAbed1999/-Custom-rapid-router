@@ -1,4 +1,4 @@
-# Use Python 3.8 slim as the base image
+# Use Python 3.10 slim as the base image
 FROM python:3.10-slim
 
 # Set environment variables
