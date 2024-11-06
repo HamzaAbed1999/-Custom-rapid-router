@@ -238,7 +238,7 @@
           </label>
       </div>
 {#{% if request.user.is_authenticated %}#}
-    <div id="load_tab" class="tab selectable">
+    <div id="load_tab" style="display: none" class="tab selectable">
       <input type="radio" name="tabs" id="load_radio">
       <label for="load_radio">
         <img src="{% static 'game/image/icons/load.svg' %}">
