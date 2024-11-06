@@ -44,7 +44,7 @@
     var NIGHT_MODE_FEATURE_ENABLED = {{ night_mode_feature_enabled }}
     var NIGHT_MODE = {{ night_mode }}
     var FLIP_NIGHT_MODE_URL = "{{flip_night_mode_url|default:""}}"
-    { #var USER_LOGGED_IN = {{ request.user.is_authenticated | booltojs } }#}
+    var USER_LOGGED_IN = {{ request.user.is_authenticated | booltojs }}
 
     var RANDOM = {{ episode.random_levels_enabled| booltojs}}
     var IS_RANDOM_LEVEL = {{ random_level| booltojs}}
@@ -52,7 +52,7 @@
     var BLOCKS = []
     var maxInstances = {}
     {% for block in blocks %}
-    BLOCKS.push({ 'type': "{{block.type}}"{% if block.number %}, 'number': { { block.number } } {% endif %}})
+    BLOCKS.push({ 'type': "{{block.type}}"{% if block.number %}, 'number': {{ block.number }} {% endif %}})
     {% if block.number %}
     maxInstances["{{block.type}}"] = {{ block.number }}
     {% endif %}
@@ -339,8 +339,7 @@
                 {% endif %}
               </h3>
               <div>
-                <div id="pythonIntro">{% trans "Use the Python editor below to design your program, and then click play
-                  to try it out!" %}</div>
+                <div id="pythonIntro">{% trans "Use the Python editor below to design your program, and then click playto try it out!" %}</div>
                 <button class="navigation_button_portal long_button" id="van_commands_help">
                   <img src="{% static 'game/image/icons/python.svg' %}">
                   <span>{% trans "Commands" %}</span>
