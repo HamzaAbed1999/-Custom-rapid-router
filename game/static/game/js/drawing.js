@@ -84,7 +84,7 @@ ocargo.Drawing = function (startingPosition) {
   /**
    * Zooming
    */
-  function zoomMap (shouldZoomOut) {
+  function zoomMap(shouldZoomOut) {
     if (shouldZoomOut) {
       let newX = currentStartX - zoom
       let newY = currentStartY - zoom
@@ -199,7 +199,7 @@ ocargo.Drawing = function (startingPosition) {
     }
   }
 
-  function calculateCFCInitialPosition (startNode) {
+  function calculateCFCInitialPosition(startNode) {
     let coord = ocargo.Drawing.translate(startNode.coordinate)
     return {
       x: coord.x * GRID_SPACE_SIZE + INITIAL_CFC_OFFSET_X + PAPER_PADDING,
@@ -207,7 +207,7 @@ ocargo.Drawing = function (startingPosition) {
     }
   }
 
-  function calculateInitialRotation (previousNode, startNode) {
+  function calculateInitialRotation(previousNode, startNode) {
     let nodeAngleRadians = ocargo.calculateNodeAngle(previousNode, startNode)
     let nodeAngleDegrees = nodeAngleRadians * (180 / Math.PI)
     return -nodeAngleDegrees // Calculation is counterclockwise, transformations are clockwise
@@ -217,7 +217,7 @@ ocargo.Drawing = function (startingPosition) {
   // Directions are relative to the centre point of the turn
   // E.g. an L-shape turn will be described as 'UR'
   // D: Down, U: Up, L: Left, R:Right
-  function getRoadLetters (previous, node1, node2) {
+  function getRoadLetters(previous, node1, node2) {
     previous = ocargo.Drawing.translate(previous)
     node1 = ocargo.Drawing.translate(node1)
     node2 = ocargo.Drawing.translate(node2)
@@ -249,29 +249,29 @@ ocargo.Drawing = function (startingPosition) {
     }
   }
 
-  function isHorizontal (prev, next) {
+  function isHorizontal(prev, next) {
     return prev.y === next.y
   }
 
-  function isVertical (prev, next) {
+  function isVertical(prev, next) {
     return prev.x === next.x
   }
 
-  function nextPointAbove (curr, next) {
+  function nextPointAbove(curr, next) {
     return curr.y < next.y
   }
 
-  function nextPointFurther (curr, next) {
+  function nextPointFurther(curr, next) {
     return curr.x < next.x
   }
 
-  function isProgressive (coord1, coord2) {
+  function isProgressive(coord1, coord2) {
     return coord1 < coord2
   }
 
   // Returns the direction of the middle branch
   // E.g. T-shaped junction will be described as 'down'
-  function tJunctionOrientation (middle, node1, node2, node3) {
+  function tJunctionOrientation(middle, node1, node2, node3) {
     let res1 = getRoadLetters(node1, middle, node2)
     let res2 = getRoadLetters(node2, middle, node3)
 
@@ -298,9 +298,9 @@ ocargo.Drawing = function (startingPosition) {
         .rect(
           destination.coordinate.x * GRID_SPACE_SIZE + PAPER_PADDING,
           PAPER_HEIGHT -
-            destination.coordinate.y * GRID_SPACE_SIZE -
-            100 +
-            PAPER_PADDING,
+          destination.coordinate.y * GRID_SPACE_SIZE -
+          100 +
+          PAPER_PADDING,
           100,
           100
         )
@@ -310,12 +310,12 @@ ocargo.Drawing = function (startingPosition) {
         .image(
           ocargo.Drawing.raphaelImageDir + HOUSE_URL,
           destination.coordinate.x * GRID_SPACE_SIZE +
-            variation[0] +
-            PAPER_PADDING,
+          variation[0] +
+          PAPER_PADDING,
           PAPER_HEIGHT -
-            destination.coordinate.y * GRID_SPACE_SIZE -
-            variation[1] +
-            PAPER_PADDING,
+          destination.coordinate.y * GRID_SPACE_SIZE -
+          variation[1] +
+          PAPER_PADDING,
           50,
           50
         )
@@ -328,7 +328,7 @@ ocargo.Drawing = function (startingPosition) {
     }
 
     //find a side of the road
-    function getDestinationPosition (destination) {
+    function getDestinationPosition(destination) {
       let roadLetters = []
 
       //might be best to just use the coordinates rather than get road letters and then convert back to directions
@@ -337,9 +337,9 @@ ocargo.Drawing = function (startingPosition) {
         let nextNode = {}
         nextNode.coordinate = new ocargo.Coordinate(
           destination.coordinate.x +
-            (destination.coordinate.x - previousNode.coordinate.x),
+          (destination.coordinate.x - previousNode.coordinate.x),
           destination.coordinate.y +
-            (destination.coordinate.y - previousNode.coordinate.y)
+          (destination.coordinate.y - previousNode.coordinate.y)
         )
         roadLetters.push(
           getRoadLetters(
@@ -491,7 +491,7 @@ ocargo.Drawing = function (startingPosition) {
       roadImages.push(roadImage)
     }
 
-    function drawDeadEndRoad (node, path) {
+    function drawDeadEndRoad(node, path) {
       let previousNode = node.connectedNodes[0]
 
       let nextNode = {}
@@ -540,7 +540,7 @@ ocargo.Drawing = function (startingPosition) {
       return road
     }
 
-    function drawSingleRoadSegment (previousNode, node, nextNode, path) {
+    function drawSingleRoadSegment(previousNode, node, nextNode, path) {
       let roadLetters = getRoadLetters(
         previousNode.coordinate,
         node.coordinate,
@@ -585,7 +585,7 @@ ocargo.Drawing = function (startingPosition) {
       return road
     }
 
-    function drawTJunction (node, path) {
+    function drawTJunction(node, path) {
       let node1 = node.connectedNodes[0]
       let node2 = node.connectedNodes[1]
       let node3 = node.connectedNodes[2]
@@ -646,7 +646,7 @@ ocargo.Drawing = function (startingPosition) {
       return road
     }
 
-    function drawCrossRoads (node, path) {
+    function drawCrossRoads(node, path) {
       let flipped = ocargo.Drawing.translate(node.coordinate)
 
       return paper.image(
@@ -871,7 +871,7 @@ ocargo.Drawing = function (startingPosition) {
   }
 
   this.removeCow = function (cow, animationLength) {
-    if (cow){
+    if (cow) {
       cow.image.animate(
         { transform: 's0.01' },
         animationLength,
@@ -1043,7 +1043,7 @@ ocargo.Drawing.startPopup = function (
   buttons
 ) {
   $('#myModal-title').html(title)
-  $('#myModal-lead').html(subtitle)
+  // $('#myModal-lead').html(subtitle)
   $('#myModal-mainText').html(message)
 
   const mascot = $('#modal-mascot')
@@ -1105,7 +1105,7 @@ ocargo.Drawing.startPopup = function (
         currentButton.append(icons[i])
         let currentLink = links[i] === "" ? "" : `window.location.replace('${links[i]}')`
         if (!(currentID === "next_button" && NEXT_LEVEL_URL === "/pythonden/")) {
-          currentButton.attr("onclick", currentLink);   
+          currentButton.attr("onclick", currentLink);
         }
       }
 
@@ -1171,12 +1171,12 @@ ocargo.Drawing.startPopup = function (
   $("#ocargo-modal").addClass("show");
 }
 
-var hideModal = function() {
+var hideModal = function () {
   $("#myModal").removeClass("show");
   $("#ocargo-modal").removeClass("show");
 }
 
-$("#close-modal").on('click', function() {
+$("#close-modal").on('click', function () {
   hideModal();
 })
 

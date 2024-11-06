@@ -3126,7 +3126,7 @@ $(function() {
         true
     );
     if (LEVEL === null){
-        ocargo.Drawing.startPopup(gettext('Welcome to the Level editor!'), subtitle, '');
+        ocargo.Drawing.startPopup(gettext('Welcome to the Level editor!'), '', '');
     } else {
         let buttons = '';
         buttons += ocargo.button.dismissButtonHtml("edit_button", "Edit");
